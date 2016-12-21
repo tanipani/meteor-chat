@@ -1,0 +1,58 @@
+<head>
+  <title>meteortest</title>
+</head>
+
+<body>
+  <div class="mdl-layout mdl-layout--fixed-header">
+
+
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Chat</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        {{> loginButtons align="right"}}
+      </nav>
+    </div>
+  </header>
+
+  {{> chat}}
+  </div>
+</body>
+
+<template name="msgForm">
+  <form class="msg-form">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="msg-input">
+      <label class="mdl-textfield__label" for="msg-input">Type message...</label>
+    </div>
+  </form>
+</template>
+
+<template name="chat">
+  <div class="mdl-grid mdl-cell--8-col chatapp">
+    {{#if isLoggedIn}}
+      {{> msgForm}}
+    {{else}}
+    <div>
+      <div class="mdl-chip mdl-chip--contact login-hint">
+        <span class="mdl-chip__contact mdl-color--red mdl-color-text--white msg__username">i</span>
+        <span class="mdl-chip__text">Please log in to chat.</span>
+      </div>
+    </div>
+    {{/if}}
+    
+    {{#if isLoggedIn}}
+      {{#each msg in messages}}
+      <div class="mdl-chip mdl-chip--contact msg">
+        <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white msg__username">{{msg.username}}</span>
+        <span class="mdl-chip__text">{{msg.msg}}</span>
+      </div>
+
+      {{/each}}
+    {{/if}}
+  </div>
+</template>

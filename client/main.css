@@ -1,0 +1,22 @@
+/* CSS declarations go here */
+html, body {
+	height: 100%;
+}
+
+.msg-form {
+	width: 100%;
+}
+
+.chatapp .msg {
+	display: block !important;
+	width: 100%;
+	margin: 4px 0;
+}
+.chatapp .msg__username {
+	width: auto !important;
+	padding: 0 15px;
+}
+
+.chatapp .login-hint {
+	margin-bottom: 25px;
+}
